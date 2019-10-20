@@ -2,11 +2,14 @@ const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const dotenv = require('dotenv');
 
 const postRoutes = require('./routes/posts');
 const userRoutes = require('./routes/user');
 
 const app = express();
+
+dotenv.config();
 
 mongoose
   .connect(
@@ -25,8 +28,8 @@ mongoose
   .then(() => {
     console.log("Connected to database");
   })
-  .catch(() => {
-    console.log("Connection failed");
+  .catch((error) => {
+    console.log(error);
   });
 
 app.use(bodyParser.json());
