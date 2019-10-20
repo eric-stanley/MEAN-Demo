@@ -19,7 +19,8 @@ mongoose
       "/" +
       process.env.MONGO_ATLAS_DB +
       "?retryWrites=true",
-    { useNewUrlParser: true }
+    { useNewUrlParser: true,
+      useUnifiedTopology: true }
   )
   .then(() => {
     console.log("Connected to database");
@@ -30,7 +31,7 @@ mongoose
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended:false }));
-app.use('/images', express.static(path.join('backend/images')));
+app.use('/images', express.static(path.join(__dirname, '/images')));
 
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
