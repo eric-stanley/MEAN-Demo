@@ -41,8 +41,8 @@ testem.log
 /typings
 
 # Environment variables
-*.env
-*.yml
+/backend/*.env
+/backend/*.yml
 
 # System Files
 .DS_Store
